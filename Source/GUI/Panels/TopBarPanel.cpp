@@ -44,9 +44,6 @@ void TopBarPanel::prepare() {
     addAndMakeVisible(settingsButton);
 
     // Logo
-    sourceRNG = juce::Random();
-    sourceRNG.setSeedRandomly();
-
     const juce::Image logoIcon = Theme::Icons::getLogo();
     overlayColor = Theme::Colors::disabled;
     logo.setColorOnHover(overlayColor.brighter(0.1f));
@@ -55,7 +52,7 @@ void TopBarPanel::prepare() {
         logoIcon, 1.0f, overlayColor,
         logoIcon, 1.0f, overlayColor);
     logo.onClick = [&]() {
-        const juce::String source = sources[sourceRNG.nextInt(sources.size())];
+        const juce::String source = "https://lyranonymous.horse/";
         juce::URL pageURL(source);
         if (pageURL.isWellFormed() && juce::URL::isProbablyAWebsiteURL(source)) {
             pageURL.launchInDefaultBrowser();
